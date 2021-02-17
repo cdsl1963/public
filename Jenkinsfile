@@ -2,12 +2,15 @@ pipeline {
   agent any
   stages {
     stage('stage 1') {
-       steps {
-         echo 'running stage 1'
-         if (env.enable_rerun) {
-           echo 'could rerun'
-         }
-       }
+      steps {
+        script {
+          echo 'running stage 1'
+          echo "could rerun ${env.enable_rerun}"
+          if (env.enable_rerun == "true") {
+             echo 'nearly'
+          }
+        }
+      }
     }
   }
 }
