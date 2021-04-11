@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('stage 1') {
       steps {
-          step([
+        step([
           $class: 'GitHubSetCommitStatusBuilder',
           contextSource: [
             $class: 'ManuallyEnteredCommitContextSource',
@@ -19,6 +19,20 @@ pipeline {
 	     build job: env.BRANCH_NAME, wait: false
           }
         }
+        step([
+          $class: 'GitHubCommitStatusSetter',
+          errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
+          contextSource: [
+            $class: 'ManuallyEnteredCommitContextSource',
+            context: 'continuous-integration/jenkins/branch'
+          ],
+          statusResultSource: [
+            $class: 'ConditionalStatusResultSource',
+            results: [
+              [$class: 'AnyBuildResult', message: 'Pipeline result', state: currentBuild.getResult()]
+            ]
+          ]
+        ])
       }
     }
   }
