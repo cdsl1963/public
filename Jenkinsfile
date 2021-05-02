@@ -4,7 +4,8 @@ pipeline {
     stage('init') {
       steps {
         step([
-          $class: 'GitHubSetCommitStatusBuilder',
+          $class: 'GitHubSetCommitStatusSetter',
+          repoSource: [$class: 'ManuallyEnteredRepositorySource', url: 'https://github.com/cdsl1963/public'],
           contextSource: [
             $class: 'ManuallyEnteredCommitContextSource',
             context: 'continuous-integration/jenkins/branch'
