@@ -10,6 +10,7 @@ pipeline {
              echo 'nearly'
 	     build job: env.BRANCH_NAME, wait: false
           }
+          sh 'ls not_there'
         }
 	sleep 240
       }
