@@ -10,7 +10,7 @@ pipeline {
              echo 'nearly'
           }
           //sh 'ls not_there'
-          if (env.BRANCH == "develop") {
+          if (env.BRANCH_NAME == "develop") {
        	    sleep 240
           } 
         }
