@@ -5,12 +5,12 @@ pipeline {
       steps {
         step([
           $class: 'GitHubCommitStatusSetter',
-          repoSource: [$class: 'ManuallyEnteredRepositorySource', url: 'https://github.com/cdsl1963/public'],
+          reposSource: [$class: 'ManuallyEnteredRepositorySource', url: 'https://github.com/cdsl1963/public'],
           contextSource: [
             $class: 'ManuallyEnteredCommitContextSource',
             context: 'continuous-integration/jenkins/branch'
           ],
-          statusMessage: [ content: 'Pipeline started' ]
+          statusMessage: [ content: 'Pipeline startedeeee' ]
         ])
       }
     }
