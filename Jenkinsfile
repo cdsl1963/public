@@ -1,6 +1,18 @@
 pipeline {
   agent any
   stages {
+    stage('init') {
+      steps {
+        step([
+          $class: 'GitHubSetCommitStatusBuilder',
+          contextSource: [
+            $class: 'ManuallyEnteredCommitContextSource',
+            context: 'continuous-integration/jenkins/branch'
+          ],
+          statusMessage: [ content: 'Pipeline started' ]
+        ])
+      }
+    }
     stage('stage 1') {
       steps {
         script {
@@ -8,7 +20,6 @@ pipeline {
           echo "could rerun ${env.enable_rerun}"
           if (env.enable_rerun == "true") {
              echo 'nearly'
-	     build job: env.BRANCH_NAME, wait: false
           }
           sh 'ls not_there'
         }
