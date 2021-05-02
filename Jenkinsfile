@@ -9,6 +9,7 @@ pipeline {
           if (env.enable_rerun == "true") {
              echo 'nearly'
           }
+          //sh 'ls not_there'
         }
        	sleep 240
       }
