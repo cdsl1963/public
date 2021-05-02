@@ -10,8 +10,10 @@ pipeline {
              echo 'nearly'
           }
           //sh 'ls not_there'
+          if (env.BRANCH == "develop") {
+       	    sleep 240
+          } 
         }
-       	sleep 240
       }
     }
   }
