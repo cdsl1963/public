@@ -4,7 +4,7 @@ pipeline {
     stage('init') {
       steps {
         step([
-          $class: 'GitHubSetCommitStatusSetter',
+          $class: 'GitHubCommitStatusSetter',
           repoSource: [$class: 'ManuallyEnteredRepositorySource', url: 'https://github.com/cdsl1963/public'],
           contextSource: [
             $class: 'ManuallyEnteredCommitContextSource',
@@ -22,7 +22,7 @@ pipeline {
           if (env.enable_rerun == "true") {
              echo 'nearly'
           }
-          sh 'ls not_there'
+          //sh 'ls not_there'
         }
 	sleep 240
       }
