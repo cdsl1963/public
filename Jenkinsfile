@@ -8,13 +8,12 @@ pipeline {
           echo "could rerun ${env.enable_rerun}"
           if (env.enable_rerun == "true") {
              echo 'nearly'
-	     build job: env.BRANCH_NAME, wait: false
           }
-          sh 'ls not_there'
+          //sh 'ls not_there'
         }
-	sleep 240
+       	sleep 240
       }
     }
   }
 }
-// comment 5
+// comment 6
