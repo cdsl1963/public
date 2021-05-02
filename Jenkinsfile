@@ -10,7 +10,7 @@ pipeline {
              echo 'nearly'
           }
         }
-      	sleep 240
+       	sleep 240
       }
     }
   }
