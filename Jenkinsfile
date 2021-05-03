@@ -10,10 +10,13 @@ pipeline {
              echo 'nearly'
           }
           //sh 'ls not_there'
+          echo $(env.BRANCH_NAME)
+          if (env.BRANCH_NAME == "develop") {
+       	    sleep 240
+          }
         }
-	      sleep 240
       }
     }
   }
 }
-// comment 102
+// comment 6
