@@ -1,15 +1,11 @@
 pipeline {
   agent any
   stages {
-    stage('Load') {
-      code = load 'lib.groovy'
-    }
-    stage('Execute') {
-      code.example1()
-    }
     stage('stage 1') {
       steps {
         script {
+          code = load 'lib.groovy'
+          code.example2()
           echo 'running stage 1'
           echo "could rerun ${env.enable_rerun}"
           if (env.enable_rerun == "true") {
