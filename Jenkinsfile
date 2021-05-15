@@ -7,12 +7,8 @@ pipeline {
           code = load 'libs/lib.groovy'
           code.example2()
           echo 'running stage 1'
-          echo "could rerun ${env.enable_rerun}"
-          if (env.enable_rerun == "true") {
-             echo 'nearly'
-          }
           //sh 'ls not_there'
-          echo ${env.BRANCH_NAME}
+          echo env.BRANCH_NAME
           if (env.BRANCH_NAME == "develop") {
        	    sleep 240
           }
