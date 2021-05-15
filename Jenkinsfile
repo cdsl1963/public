@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage('Load') {
-      code = load 'libs/lib.groovy'
+      code = load 'lib.groovy'
     }
     stage('Execute') {
       code.example1()
